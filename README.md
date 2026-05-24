@@ -1,6 +1,6 @@
 <h1>ExpNo 5 : Implement Simple Hill Climbing Algorithm</h1> 
-<h3>Name:             </h3>
-<h3>Register Number:             </h3>
+<h3>Name: THIRISHA A </h3>
+<h3>Register Number: 212223040228 </h3>
 <H3>Aim:</H3>
 <p>Implement Simple Hill Climbing Algorithm and Generate a String by Mutating a Single Character at each iteration </p>
 <h2> Theory: </h2>
@@ -38,7 +38,56 @@ Feedback is provided in terms of heuristic function
 <h3>Step-4:</h3>
 <p> Lopp Step -2 and Step-3  until we achieve the score to be Zero to achieve Global Minima.</p>
 
-<hr>
+
+# PROGRAM:
+```
+import random
+import string
+
+def generate_random_solution(answer):
+  l = len(answer)
+  return [random.choice(string.printable) for _ in range(l)]
+
+def evaluate(solution, answer):
+  target = list(answer)
+  diff = 0
+  for i in range(len(target)):
+      s = solution[i]
+      t = target[i]
+      # calculate ASCII difference
+      diff += abs(ord(s) - ord(t))
+  return diff
+
+def mutate_solution(solution):
+  ind = random.randint(0, len(solution)-1)
+  solution[ind] = random.choice(string.printable)
+  return solution
+
+def SimpleHillClimbing():
+  answer = "Artificial Intelligence"
+  best = generate_random_solution(answer)
+  best_score = evaluate(best, answer)
+  iteration = 0
+  max_iterations = 100000   # safety stop
+
+  while True:
+      iteration += 1
+      print("Score:", best_score, " Solution:", "".join(best))
+      if best_score == 0:
+          print("Perfect match found!")
+          break
+      new_solution = mutate_solution(list(best))
+      score = evaluate(new_solution, answer)
+      if score < best_score:
+          best = new_solution
+          best_score = score
+      if iteration >= max_iterations:
+          print("Stopped after", max_iterations, "iterations")
+          break
+
+SimpleHillClimbing()
+```
+
 <h2>Sample Input and Output</h2>
 <h2>Sample String:</h2> Artificial Intelligence
 <h2>Output:</h2>
@@ -59,3 +108,14 @@ Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 1  Solution :  Artificial Intelligencf<br>
 Score: 0  Solution :  Artificial Intelligence<br>
+
+<img width="369" height="305" alt="560071954-377fe43a-1b0c-4dd1-ad84-2b01d0f2635b" src="https://github.com/user-attachments/assets/358c62a7-6911-4155-9e4f-e783add435f0" />
+
+
+
+
+<img width="360" height="268" alt="560071979-1f1eccc2-99a5-4ec2-9369-3c6b9ded67e1" src="https://github.com/user-attachments/assets/1bb22e18-b4ec-4377-b7f8-a4ecd8d69435" />
+
+# RESULT:
+
+Thus, Simple Hill Climbing Algorithm and Generate a String by Mutating a Single Character at each iteration is completed Successfully.
